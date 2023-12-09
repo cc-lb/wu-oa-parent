@@ -1,0 +1,3 @@
+# Project exclude paths
+/wu-oa/node_modules/
+/wu-oa/npm/node_modules/
