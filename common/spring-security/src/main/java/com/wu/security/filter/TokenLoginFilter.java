@@ -35,7 +35,7 @@ import java.util.HashMap;
  */
 
 /**
- * 通过继承的方式单独实现需要的方法，不是springboot的主流实现方法，可以用@Bean组件尝试
+ *
  * 登录过滤器，继承UsernamePasswordAuthenticationFilter，对用户名密码进行登录校验
  */
 public class TokenLoginFilter extends UsernamePasswordAuthenticationFilter {
@@ -59,7 +59,7 @@ public class TokenLoginFilter extends UsernamePasswordAuthenticationFilter {
         LoginVo loginVo = new ObjectMapper().readValue(request.getInputStream(), LoginVo.class);
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(loginVo.getUsername(), loginVo.getPassword());
         //较源码来说少了： this.setDetails(request, authRequest);   authRequest=authenticationToken
-        //这句话什么意思
+        //这句话什么意思?在Manager中进行授权
         return this.getAuthenticationManager().authenticate(authenticationToken);
     }
 

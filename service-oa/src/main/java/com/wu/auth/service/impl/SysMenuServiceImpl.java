@@ -117,7 +117,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu>
             menusList=sysMenuMapper.getMenusListByUserId(userId);
         }
         //将查询到的菜单权限构建成树形结构，Router格式也是树形结构的变体
-        List<SysMenu> sysMenuTreeList = MenuHelper.buildTree(menusList);
+        List<SysMenu> sysMenuTreeList = MenuHelper.buildTree(menusList);//返回的是0，1,2级菜单
         //构建Router结构
         List<RouterVo> routerVoList = this.buildRouterMenus(sysMenuTreeList);
         return  routerVoList;
@@ -136,7 +136,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu>
 
 
         //菜单分为哪几种：
-        // 第一是系统管理（特殊），第二是管理类菜单（如角色，用户），第三类是管理类菜单下的增删改查等操作
+        // 第一是分类菜单（系统菜单，审批菜单只是分类而已），第二是功能类菜单（如角色管理，用户管理），第三类是功能类菜单下的增删改查等操作
         //而前端分配用户的菜单权限只需要管理类菜单的路径
 
 
@@ -145,7 +145,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu>
 
         //递归遍历菜单,将每个菜单中的信息赋给RouterVo节点
         //最终：routers的信息分为三层，
-        // 第一层系统管理菜单的信息（RouterVo），第二层管理类菜单的信息（RouterVo），
+        // 第一层分类菜单的信息（RouterVo），第二层功能类菜单的信息（RouterVo），
         // 第三层管理类菜单下的需要跳转页面的操作信息（RouterVo），注意没有增删改查这些操作信息（他们没跳转页面不需要额外设置）
         for (SysMenu menuTree:
              sysMenuTreeList) {
@@ -175,13 +175,13 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu>
                 }
 
             }else {
-
-                if(StringUtils.isEmpty(children)){
-                    if(children.size()>0) router.setAlwaysShow(true);
-                }
-                //递归
-              router.setChildren(buildRouterMenus(children));
+                    if(!CollectionUtils.isEmpty(children)) {
+                            if (children.size() > 0) router.setAlwaysShow(true);
+                        //递归
+                        router.setChildren(buildRouterMenus(children));
+                    }
             }
+
 routers.add(router);
         }
 
@@ -218,7 +218,7 @@ routers.add(router);
     public List<String> findUserPermsList(Long userId) {
 
         List<SysMenu> menus=null;
-        if(userId.intValue()==0){
+        if(userId.intValue()==1){
              menus = this.list(new LambdaQueryWrapper<SysMenu>()
                     .eq(SysMenu::getStatus, 1));
         }else {

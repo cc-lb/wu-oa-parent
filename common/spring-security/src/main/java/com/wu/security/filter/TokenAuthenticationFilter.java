@@ -54,7 +54,10 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
             filterChain.doFilter(request, response);
              return;
         }
-
+        if(request.getRequestURI().equals("/admin/system/index/register")){
+            filterChain.doFilter(request, response);
+            return;
+        }
         UsernamePasswordAuthenticationToken authentication = getAuthtication(request);
         if(null != authentication) {
             SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -83,6 +86,7 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
                 List<Map> mapList= JSON.parseArray(authoritiesString);
                 ArrayList<SimpleGrantedAuthority> authorityArrayList = new ArrayList<>();
                 for (Map map:mapList) {
+                    System.out.println("authori存redis中数据：" + map.toString());
                     authorityArrayList.add(new SimpleGrantedAuthority((String) map.get("authority")));
                 }
 

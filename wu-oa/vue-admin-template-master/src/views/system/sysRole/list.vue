@@ -16,6 +16,9 @@
         </el-row>
       </el-form>
     </div>
+
+
+
     <!-- 表格 -->
     <el-table
       v-loading="listLoading"
@@ -31,6 +34,7 @@
         label="序号"
         width="70"
         align="center">
+
         <template slot-scope="scope">
           {{ (page - 1) * limit + scope.$index + 1 }}
         </template>
@@ -49,6 +53,8 @@
       
       
     </el-table>
+ 
+
  
  <!-- 工具条 -->
 <div class="tools-div">
@@ -86,6 +92,9 @@
  
   </div>
  </template> 
+
+
+
 <script> 
     import api from '@/api/system/sysRole'
     export default {

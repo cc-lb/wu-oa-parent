@@ -7,6 +7,7 @@
       <van-collapse v-model="activeNames">
         <van-collapse-item
           v-for="(item,key) in list"
+          :key="item.id"
           :title="item.name"
           :name="item.key"
           >

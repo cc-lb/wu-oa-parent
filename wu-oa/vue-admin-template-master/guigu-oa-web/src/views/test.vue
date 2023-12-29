@@ -1,9 +1,8 @@
 <template>
   <div>
     <div>账号切换</div>
-    <button @click="wjl()" type="default" size="mini">王经理</button>
-    <button @click="lrsjl()" type="default" size="mini">李人事经理</button>
-    <button @click="zzjl()" type="default" size="mini">张总经理</button>
+     
+    <button @click="admin()" type="default" size="mini">总管理员</button>
     <button @click="lisi()" type="default" size="mini">李四</button>
     <button @click="zhangsan()" type="default" size="mini">张三</button>
 
@@ -26,6 +25,7 @@ export default {
   },
 
   methods: {
+    /*
     wjl() {
       window.localStorage.setItem('token', '');
       let token = 'eyJhbGciOiJIUzUxMiIsInppcCI6IkdaSVAifQ.H4sIAAAAAAAA_6tWKi5NUrJScgwN8dANDXYNUtJRSq0oULIyNLMwNzczNDE211EqLU4t8kxRsjKCMPMSc1OBWsqzcpRqAcyDuLxAAAAA.pEyYE6lMiYOu_6r8t1d5J4hhOh_H4kaH7DASdosmkAtBStBAAfWl32NMWBKFvqdJMSWuO4SDQDh1Lt4Sl3EA5A'
@@ -46,16 +46,23 @@ export default {
       window.localStorage.setItem('token', token);
       this.token = window.localStorage.getItem('token')
     },
+*/
+    admin() {
+      window.localStorage.setItem('token', '');
+      let token ='eyJhbGciOiJIUzUxMiIsInppcCI6IkdaSVAifQ.H4sIAAAAAAAA_6tWKi5NUrJScgwN8dANDXYNUtJRSq0oULIyNDcwsTAzMbUw1lEqLU4t8kwBikGYeYm5qUAtiSm5mXlKtQBMMDPHQgAAAA.ZSTpaqMZ4wd7AlON9MNLxS3eAbbCfvia7Dn4iFsBIsZVlDJthqNDyEV3cwnc8j4T3k0XulvwTHsB_KUnimregg'
+      window.localStorage.setItem('token', token);
+      this.token = window.localStorage.getItem('token')
+    },
 
     lisi() {
       window.localStorage.setItem('token', '');
-      let token ='eyJhbGciOiJIUzUxMiIsInppcCI6IkdaSVAifQ.H4sIAAAAAAAA_6tWKi5NUrJScgwN8dANDXYNUtJRSq0oULIyNLMwtzAxtTA301EqLU4t8kxRsjKBMPMSc1OBWnIyizOVagGaasq_QQAAAA.NYtvPV_oFnwHL0VAQemvJ0OiIyzdnlXNGX1iyY_mDyy-FIQhwIDcbJnD33XDVGsJn9_KmrRzpJJAIgN3uISKSA'
-      window.localStorage.setItem('token', token);
+      let token ='eyJhbGciOiJIUzUxMiIsInppcCI6IkdaSVAifQ.H4sIAAAAAAAA_6tWKi5NUrJScgwN8dANDXYNUtJRSq0oULIyNDcwsTAzMTMy11EqLU4t8kwBiplC2HmJualAPTmZxZlKtQDWl9yoQgAAAA.Xjdwoj7JSllRw9Z00Rh0e7GiW5L7YlvHuLL686BHsf3SMN96YCB5xtZp3F93SBDvLnimQK6iJiG6Q7l1iFCdvA'
+     window.localStorage.setItem('token', token);
       this.token = window.localStorage.getItem('token')
     },
     zhangsan(){
        window.localStorage.setItem('token', '');
-           let token='eyJhbGciOiJIUzUxMiIsInppcCI6IkdaSVAifQ.H4sIAAAAAAAA_6tWKi5NUrJScgwN8dANDXYNUtJRSq0oULIyNLMwNzczNDa11FEqLU4t8kwBihlD2HmJualAPVUZiXnpxYl5SrUAmPY8mkYAAAA.cpuJfoOSOU28D08NEng_Ymwvff04xuN58EoKzLUnkX2Po0eM9QHVLGk0IjJlH5-4FIDTjfqWDwKRbApYFnJZaA'
+           let token='eyJhbGciOiJIUzUxMiIsInppcCI6IkdaSVAifQ.H4sIAAAAAAAA_6tWKi5NUrJScgwN8dANDXYNUtJRSq0oULIyNDcwsTAzMbOw0FEqLU4t8kwBiplA2HmJualAPVUZiXnpxYl5SrUA47En6kYAAAA.H_NqhCeo8HD0Y2-o0DB6C9uz_zrTj5nlXudXo4wggVfchUip0GDb_XA7kuadMxRNeoOJjpKyfJF3zGBE-XZNsA'
        window.localStorage.setItem('token', token);
       this.token = window.localStorage.getItem('token')
     }

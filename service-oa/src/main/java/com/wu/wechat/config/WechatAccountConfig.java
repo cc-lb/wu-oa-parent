@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
  */
 
 
+
 @Data
 @Component
 @ConfigurationProperties(prefix="wechat")

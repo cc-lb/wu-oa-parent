@@ -8,6 +8,7 @@ import com.wu.md5.MD5;
 import com.wu.model.system.SysUser;
 import com.wu.result.Result;
 import com.wu.vo.system.LoginVo;
+import com.wu.vo.system.RegisterVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,14 @@ public class IndexController {
      * 登录
      * @return
      */
+
+    @ApiOperation("注册")
+    @PostMapping("register")
+    public Result login(@RequestBody RegisterVo registerVo){
+
+        return Result.ok();
+    }
+
    @ApiOperation("登录")
     @PostMapping("login")
     public Result login(@RequestBody LoginVo loginVo){

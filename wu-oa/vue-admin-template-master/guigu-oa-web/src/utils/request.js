@@ -2,9 +2,9 @@ import axios from "axios";
 
 // 创建axios实例
 const service = axios.create({
-  baseURL: "http://ggkt2.vipgz1.91tunnel.com",
+ // baseURL: "http://ggkt2.vipgz1.91tunnel.com",
   // "/api",
-  //"http://localhost:8800",
+  baseURL:"http://localhost:8800",
 
   //"http://oa.atguigu.cn", // api 的 base_url
   timeout: 30000 // 请求超时时间
@@ -13,7 +13,13 @@ const service = axios.create({
 // http request 拦截器
 service.interceptors.request.use(config => {
   //window.localStorage.getItem("token") || 
-    let token = window.localStorage.getItem("token") || "eyJhbGciOiJIUzUxMiIsInppcCI6IkdaSVAifQ.H4sIAAAAAAAA_6tWKi5NUrJScgwN8dANDXYNUtJRSq0oULIyNLMwN7M0MrUw01EqLU4t8kwBikGYeYm5qUAtiSm5mXlKtQDt0bc0QgAAAA.5zyktdrJLeIZCBMiPRW-PSnbzE9C7eV110GKDpPDQs7SIBwftXsQomI_6ahnN6YWMKTXWohGCFggPkSKpK2YNA";
+    //let token = window.localStorage.getItem("token") || "eyJhbGciOiJIUzUxMiIsInppcCI6IkdaSVAifQ.H4sIAAAAAAAA_6tWKi5NUrJScgwN8dANDXYNUtJRSq0oULIyNDcwMTExM7Gw0FEqLU4t8kwBihlD2HmJualAPeX5RdmpRQaGSrUAYeobbUYAAAA.vptEisEdltcDOloqX0wOHXwqsWfe2loG4Hi32-Ewy7HMSGXZHMHGyuHpFwNUtTku_wYN9HSPzjHdjYy9-eIm-w"
+    let token = window.localStorage.getItem("token") ||"";
+    // "eyJhbGciOiJIUzUxMiIsInppcCI6IkdaSVAifQ.H4sIAAAAAAAA_6tWKi5NUrJScgwN8dANDXYNUtJRSq0oULIyNDcwMTExM7Gw0FEqLU4t8kwBihlD2HmJualAPeX5RdmpRQaGSrUAYeobbUYAAAA.vptEisEdltcDOloqX0wOHXwqsWfe2loG4Hi32-Ewy7HMSGXZHMHGyuHpFwNUtTku_wYN9HSPzjHdjYy9-eIm-w";
+
+    
+    //"eyJhbGciOiJIUzUxMiIsInppcCI6IkdaSVAifQ.H4sIAAAAAAAA_6tWKi5NUrJScgwN8dANDXYNUtJRSq0oULIyNDcwMTExM7Gw0FEqLU4t8kwBihlD2HmJualAPeX5RdmpRQaGSrUAYeobbUYAAAA.vptEisEdltcDOloqX0wOHXwqsWfe2loG4Hi32-Ewy7HMSGXZHMHGyuHpFwNUtTku_wYN9HSPzjHdjYy9-eIm-w"
+  
     if (token != "") {
       config.headers["token"] = token;
     }
